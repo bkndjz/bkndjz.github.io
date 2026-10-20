@@ -1,0 +1,234 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  
+  
+  <title>cloud serve | My blog</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+  <meta name="description" content="今天费了一番功夫把qqagent转移到了云服务器上，用的是阿里云的学生300代金卷，租了个2核2G的小服务器。最开始用的是windows系统，因为我电脑用的就是windows系统，比较熟悉，但因为用的Server Core 无图形界，SnowLuma 起不来。于是便转成liunx系统，有使得本机 ssh 工具全废，只能改用 Python + paramiko，后来又遇上zip 解压失败，Docke">
+<meta property="og:type" content="article">
+<meta property="og:title" content="cloud serve">
+<meta property="og:url" content="https://bkndjz.github.io/2026/10/20/cloud-serve/index.html">
+<meta property="og:site_name" content="My blog">
+<meta property="og:description" content="今天费了一番功夫把qqagent转移到了云服务器上，用的是阿里云的学生300代金卷，租了个2核2G的小服务器。最开始用的是windows系统，因为我电脑用的就是windows系统，比较熟悉，但因为用的Server Core 无图形界，SnowLuma 起不来。于是便转成liunx系统，有使得本机 ssh 工具全废，只能改用 Python + paramiko，后来又遇上zip 解压失败，Docke">
+<meta property="og:locale" content="en_US">
+<meta property="article:published_time" content="2026-10-20T15:22:48.000Z">
+<meta property="article:modified_time" content="2026-10-20T15:53:41.334Z">
+<meta property="article:author" content="bkndjz">
+<meta property="article:tag" content="qqagent">
+<meta name="twitter:card" content="summary">
+  
+    <link rel="alternate" href="/atom.xml" title="My blog" type="application/atom+xml">
+  
+  
+    <link rel="shortcut icon" href="/favicon.png">
+  
+  
+  
+<link rel="stylesheet" href="/css/style.css">
+
+  
+    
+<link rel="stylesheet" href="/fancybox/jquery.fancybox.min.css">
+
+  
+  
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/fork-awesome@1.2.0/css/fork-awesome.min.css">
+
+<meta name="generator" content="Hexo 8.1.2"></head>
+
+<body>
+  <div id="container">
+    <div id="wrap">
+      <header id="header">
+  <div id="banner"></div>
+  <div id="header-outer" class="outer">
+    <div id="header-title" class="inner">
+      <h1 id="logo-wrap">
+        <a href="/" id="logo">My blog</a>
+      </h1>
+      
+    </div>
+    <div id="header-inner" class="inner">
+      <nav id="main-nav">
+        <a id="main-nav-toggle" class="nav-icon"><span class="fa fa-bars"></span></a>
+        
+          <a class="main-nav-link" href="/">Home</a>
+        
+          <a class="main-nav-link" href="/archives">Archives</a>
+        
+      </nav>
+      <nav id="sub-nav">
+        
+        
+          <a class="nav-icon" href="/atom.xml" title="RSS Feed"><span class="fa fa-rss"></span></a>
+        
+        <a class="nav-icon nav-search-btn" title="Search"><span class="fa fa-search"></span></a>
+      </nav>
+      <div id="search-form-wrap">
+        <form action="//google.com/search" method="get" accept-charset="UTF-8" class="search-form"><input type="search" name="q" class="search-form-input" placeholder="Search"><button type="submit" class="search-form-submit">&#xF002;</button><input type="hidden" name="sitesearch" value="https://bkndjz.github.io"></form>
+      </div>
+    </div>
+  </div>
+</header>
+
+      <div class="outer">
+        <section id="main"><article id="post-cloud-serve" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
+  <div class="article-meta">
+    <a href="/2026/10/20/cloud-serve/" class="article-date">
+  <time class="dt-published" datetime="2026-10-20T15:22:48.000Z" itemprop="datePublished">2026-10-20</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 class="p-name article-title" itemprop="headline name">
+      cloud serve
+    </h1>
+  
+
+      </header>
+    
+    <div class="e-content article-entry" itemprop="articleBody">
+      
+        <p>今天费了一番功夫把qqagent转移到了云服务器上，用的是阿里云的学生300代金卷，租了个2核2G的小服务器。<br>最开始用的是windows系统，因为我电脑用的就是windows系统，比较熟悉，但因为用的Server Core 无图形界，SnowLuma 起不来。<br>于是便转成liunx系统，有使得本机 ssh 工具全废，只能改用 Python + paramiko，后来又遇上zip 解压失败，Docker 装不上，OneBot 配置不生效等问题，逐一解决后终于完成了云端的部署，现在qqagent可以24h在线了，接下来准备继续完善桌宠和试试用AI控制手机。</p>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="https://bkndjz.github.io/2026/10/20/cloud-serve/" data-id="cuidAe_UrnAPiOnZ80akrgH_p" data-title="cloud serve" class="article-share-link"><span class="fa fa-share">Share</span></a>
+      
+      
+      
+  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/qqagent/" rel="tag">qqagent</a></li></ul>
+
+    </footer>
+  </div>
+  
+    
+<nav id="article-nav">
+  
+  
+    <a href="/2026/10/19/3D-desktop-pet-model-rendering/" id="article-nav-older" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Older</strong>
+      <div class="article-nav-title">3D desktop pet model rendering</div>
+    </a>
+  
+</nav>
+
+  
+</article>
+
+
+</section>
+        
+          <aside id="sidebar">
+  
+    
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Tags</h3>
+    <div class="widget">
+      <ul class="tag-list" itemprop="keywords"><li class="tag-list-item"><a class="tag-list-link" href="/tags/qqagent/" rel="tag">qqagent</a></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Tag Cloud</h3>
+    <div class="widget tagcloud">
+      <a href="/tags/qqagent/" style="font-size: 10px;">qqagent</a>
+    </div>
+  </div>
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Archives</h3>
+    <div class="widget">
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2026/10/">October 2026</a></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Recent Posts</h3>
+    <div class="widget">
+      <ul>
+        
+          <li>
+            <a href="/2026/10/20/cloud-serve/">cloud serve</a>
+          </li>
+        
+          <li>
+            <a href="/2026/10/19/3D-desktop-pet-model-rendering/">3D desktop pet model rendering</a>
+          </li>
+        
+          <li>
+            <a href="/2026/10/16/My-New-Post/">My First Post</a>
+          </li>
+        
+          <li>
+            <a href="/2026/10/16/hello-world/">Hello World</a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+
+  
+</aside>
+        
+      </div>
+      <footer id="footer">
+  
+  <div class="outer">
+    <div id="footer-info" class="inner">
+      
+      &copy; 2026 bkndjz<br>
+      Powered by <a href="https://hexo.io/" target="_blank">Hexo</a>
+    </div>
+  </div>
+</footer>
+
+    </div>
+    <nav id="mobile-nav">
+  
+    <a href="/" class="mobile-nav-link">Home</a>
+  
+    <a href="/archives" class="mobile-nav-link">Archives</a>
+  
+</nav>
+    
+
+
+<script src="/js/jquery-3.6.4.min.js"></script>
+
+
+
+  
+<script src="/fancybox/jquery.fancybox.min.js"></script>
+
+
+
+
+<script src="/js/script.js"></script>
+
+
+
+
+
+  </div>
+</body>
+</html>
