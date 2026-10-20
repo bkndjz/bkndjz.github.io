@@ -71,6 +71,47 @@
       <div class="outer">
         <section id="main">
   
+    <article id="post-3D-desktop-pet-model-rendering" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
+  <div class="article-meta">
+    <a href="/2026/10/19/3D-desktop-pet-model-rendering/" class="article-date">
+  <time class="dt-published" datetime="2026-10-19T15:46:08.000Z" itemprop="datePublished">2026-10-19</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="p-name article-title" href="/2026/10/19/3D-desktop-pet-model-rendering/">3D desktop pet model rendering</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="e-content article-entry" itemprop="articleBody">
+      
+        <p>在github上看到一个用自然语言驱动3D建模的模型（<a target="_blank" rel="noopener" href="https://github.com/sola1039/HAST-SEC%EF%BC%89%EF%BC%8C%E7%AA%81%E5%8F%91%E5%A5%87%E6%83%B3%EF%BC%8C%E6%83%B3%E8%A6%81%E5%81%9A%E4%B8%80%E4%B8%AA3D%E6%A8%A1%E5%9E%8B%E7%9A%84%E6%A1%8C%E5%AE%A0%E3%80%82">https://github.com/sola1039/HAST-SEC），突发奇想，想要做一个3D模型的桌宠。</a><br>说干就干，我下载了这个模型，并从模之屋上下载了沃雅妮莎的人物模型，在模型导入的过程中，我遇到了几个明显的问题：<br>1是模型渲染时角色身上的配饰始终呈灰白色，加上材质自发光就解决了；<br>2是模型腿部总是发生穿模，穿过裙摆，最开始我以为是碰撞箱的问题，结果是因为时间步恒定为 0，弹簧物理从没跑过；<br>3是两只脚会内八，脚尖穿模，是因为脚移动是搞错了旋转角度；<br>4运行一段时间后会卡死，其实是因为求解器连续 0.5 秒判定姿态不可行，就会永久放弃并暂停，即模型算不出可行动作后放弃运算，我将其改为重置模型状态，勉强算是解决了；<br>最后说一下为什么要打上qqagent的标签：这主要和我后期计划有关，我准备之后给模型提前预存一些常见动作后接入qqagent，由qqagent指挥动作，我认为这会是一个很有意思的想法。</p>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="https://bkndjz.github.io/2026/10/19/3D-desktop-pet-model-rendering/" data-id="cuidebkkcIpi-SY70GMfieFGc" data-title="3D desktop pet model rendering" class="article-share-link"><span class="fa fa-share">Share</span></a>
+      
+      
+      
+  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/qqagent/" rel="tag">qqagent</a></li></ul>
+
+    </footer>
+  </div>
+  
+</article>
+
+
+
+  
     <article id="post-My-New-Post" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
   <div class="article-meta">
     <a href="/2026/10/16/My-New-Post/" class="article-date">
@@ -98,7 +139,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="https://bkndjz.github.io/2026/10/16/My-New-Post/" data-id="cuidlC_WwkVCe_b5ZmiGDsHiD" data-title="My First Post" class="article-share-link"><span class="fa fa-share">Share</span></a>
+      <a data-url="https://bkndjz.github.io/2026/10/16/My-New-Post/" data-id="cuidBKVZ3M8Dmy7x7LS46G9Qm" data-title="My First Post" class="article-share-link"><span class="fa fa-share">Share</span></a>
       
       
       
@@ -149,7 +190,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="https://bkndjz.github.io/2026/10/16/hello-world/" data-id="cuide5I7buWsfYtIEgQZiB2n3" data-title="Hello World" class="article-share-link"><span class="fa fa-share">Share</span></a>
+      <a data-url="https://bkndjz.github.io/2026/10/16/hello-world/" data-id="cuidPAyRRIGPufEnw0buaiWpb" data-title="Hello World" class="article-share-link"><span class="fa fa-share">Share</span></a>
       
       
       
@@ -171,9 +212,23 @@
 
   
     
+  <div class="widget-wrap">
+    <h3 class="widget-title">Tags</h3>
+    <div class="widget">
+      <ul class="tag-list" itemprop="keywords"><li class="tag-list-item"><a class="tag-list-link" href="/tags/qqagent/" rel="tag">qqagent</a></li></ul>
+    </div>
+  </div>
+
 
   
     
+  <div class="widget-wrap">
+    <h3 class="widget-title">Tag Cloud</h3>
+    <div class="widget tagcloud">
+      <a href="/tags/qqagent/" style="font-size: 10px;">qqagent</a>
+    </div>
+  </div>
+
   
     
   <div class="widget-wrap">
@@ -190,6 +245,10 @@
     <h3 class="widget-title">Recent Posts</h3>
     <div class="widget">
       <ul>
+        
+          <li>
+            <a href="/2026/10/19/3D-desktop-pet-model-rendering/">3D desktop pet model rendering</a>
+          </li>
         
           <li>
             <a href="/2026/10/16/My-New-Post/">My First Post</a>
