@@ -1,0 +1,250 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  
+  
+  <title>Stardew Valley | My blog</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+  <meta name="description" content="这段时间一直在折腾如何让qqagent接入游戏，我的第一个目标是星露谷物语，并且目前已经有明显的成效，已经可以实现基本的游玩。总体上的思路是本地写好批量脚本，包括清理，种植，挖矿，钓鱼（这个是打了mod，因为难以实现长按远抛）等，再由云端下达指令调用脚本，依次达成减少token消耗的目的。下面是在这过程中遇上的一些问题和最终解决方案：环境：代理变量大小写重复搞崩 MSBuild → 绕开项目系统，">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Stardew Valley">
+<meta property="og:url" content="https://bkndjz.github.io/2026/10/25/Stardew-Valley/index.html">
+<meta property="og:site_name" content="My blog">
+<meta property="og:description" content="这段时间一直在折腾如何让qqagent接入游戏，我的第一个目标是星露谷物语，并且目前已经有明显的成效，已经可以实现基本的游玩。总体上的思路是本地写好批量脚本，包括清理，种植，挖矿，钓鱼（这个是打了mod，因为难以实现长按远抛）等，再由云端下达指令调用脚本，依次达成减少token消耗的目的。下面是在这过程中遇上的一些问题和最终解决方案：环境：代理变量大小写重复搞崩 MSBuild → 绕开项目系统，">
+<meta property="og:locale" content="en_US">
+<meta property="article:published_time" content="2026-10-25T15:46:35.000Z">
+<meta property="article:modified_time" content="2026-10-25T16:06:15.373Z">
+<meta property="article:author" content="bkndjz">
+<meta property="article:tag" content="qqagent">
+<meta name="twitter:card" content="summary">
+  
+    <link rel="alternate" href="/atom.xml" title="My blog" type="application/atom+xml">
+  
+  
+    <link rel="shortcut icon" href="/favicon.png">
+  
+  
+  
+<link rel="stylesheet" href="/css/style.css">
+
+  
+    
+<link rel="stylesheet" href="/fancybox/jquery.fancybox.min.css">
+
+  
+  
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/fork-awesome@1.2.0/css/fork-awesome.min.css">
+
+<meta name="generator" content="Hexo 8.1.2"></head>
+
+<body>
+  <div id="container">
+    <div id="wrap">
+      <header id="header">
+  <div id="banner"></div>
+  <div id="header-outer" class="outer">
+    <div id="header-title" class="inner">
+      <h1 id="logo-wrap">
+        <a href="/" id="logo">My blog</a>
+      </h1>
+      
+    </div>
+    <div id="header-inner" class="inner">
+      <nav id="main-nav">
+        <a id="main-nav-toggle" class="nav-icon"><span class="fa fa-bars"></span></a>
+        
+          <a class="main-nav-link" href="/">Home</a>
+        
+          <a class="main-nav-link" href="/archives">Archives</a>
+        
+      </nav>
+      <nav id="sub-nav">
+        
+        
+          <a class="nav-icon" href="/atom.xml" title="RSS Feed"><span class="fa fa-rss"></span></a>
+        
+        <a class="nav-icon nav-search-btn" title="Search"><span class="fa fa-search"></span></a>
+      </nav>
+      <div id="search-form-wrap">
+        <form action="//google.com/search" method="get" accept-charset="UTF-8" class="search-form"><input type="search" name="q" class="search-form-input" placeholder="Search"><button type="submit" class="search-form-submit">&#xF002;</button><input type="hidden" name="sitesearch" value="https://bkndjz.github.io"></form>
+      </div>
+    </div>
+  </div>
+</header>
+
+      <div class="outer">
+        <section id="main"><article id="post-Stardew-Valley" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
+  <div class="article-meta">
+    <a href="/2026/10/25/Stardew-Valley/" class="article-date">
+  <time class="dt-published" datetime="2026-10-25T15:46:35.000Z" itemprop="datePublished">2026-10-25</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 class="p-name article-title" itemprop="headline name">
+      Stardew Valley
+    </h1>
+  
+
+      </header>
+    
+    <div class="e-content article-entry" itemprop="articleBody">
+      
+        <p>这段时间一直在折腾如何让qqagent接入游戏，我的第一个目标是星露谷物语，并且目前已经有明显的成效，已经可以实现基本的游玩。<br>总体上的思路是本地写好批量脚本，包括清理，种植，挖矿，钓鱼（这个是打了mod，因为难以实现长按远抛）等，再由云端下达指令调用脚本，依次达成减少token消耗的目的。<br>下面是在这过程中遇上的一些问题和最终解决方案：<br>环境：代理变量大小写重复搞崩 MSBuild → 绕开项目系统，直接 csc + build.rsp。Harmony <code>PatchAll</code> 静默不 hook → 手动 Patch。</p>
+<p>API 静默失效（最坑，不报错≠生效）：<code>pressUseToolButton</code> 空挥（游戏不认合成输入）；<code>Tool.DoFunction</code> 对杂草&#x2F;锄地&#x2F;浇水无反应 → 绕开 UI 直接改世界状态（删 object &#x2F; 铺 HoeDirt &#x2F; 置 state&#x3D;1）。</p>
+<p>存档：<code>SaveGame.Save()</code> 返回 ok 但不写盘 → 只有过夜能落盘。</p>
+<p>就绪判断：断多人后 <code>IsWorldReady</code> 变 false，动作全回”没进游戏” → 自建 <code>Ready.World</code>。</p>
+<p>前缀匹配：<code>&quot;FarmHouse&quot;.StartsWith(&quot;Farm&quot;)</code> → goto 回”已到达”，人不动 → 只认精确同名或 <code>名+数字</code>。</p>
+<p>排序在截断之后：凑够 limit 才排序 → 舍近求远 → 先全收、再排、再截。</p>
+<p>找错集合：<code>plant</code> 用”只找已有作物”的函数找空地 → 永远 planned 0。</p>
+<p>动画被打断：180ms 就放行 + 引擎不等 <code>PauseForSingleAnimation</code> → “挥一半就走”。</p>
+<p>词表不同步：<code>hoe</code>&#x2F;<code>water_all</code> 游戏侧没实现、工具描述里也没写 → 模型自己造词 → <code>E_UNKNOWN_TASK</code>。</p>
+<p>参数串位：<code>kind</code> 被填成 <code>private</code> → 白名单 + 扫包兜底 + 报错列出可用值。</p>
+<p>进程：重启 poller 重放 199 条历史（含 quit）把游戏关了 → processed-id 持久化；<code>open_sftp</code> 无超时卡死 → 加超时 + 改追加写；pythonw 静默无痕 → 日志重定向。</p>
+<p>数据：存档被游戏自己删（<code>Farm_Delete</code>），官方备份只在过夜时触发、我们从不过夜 → 一整天蒸发。补救：读档前自动整份备份。</p>
+<p>最后，我认为值得比较重要的是在清杂，挖矿时，最开始用角色周围物品数量判断行动成功与否，但角色行动导致的扫描数量改变会引发误判，因而改成用物品绝对坐标进行判断。</p>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="https://bkndjz.github.io/2026/10/25/Stardew-Valley/" data-id="cuidS5EOuzBJwL32CGz5AH9e0" data-title="Stardew Valley" class="article-share-link"><span class="fa fa-share">Share</span></a>
+      
+      
+      
+  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/qqagent/" rel="tag">qqagent</a></li></ul>
+
+    </footer>
+  </div>
+  
+    
+<nav id="article-nav">
+  
+  
+    <a href="/2026/10/20/cloud-serve/" id="article-nav-older" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Older</strong>
+      <div class="article-nav-title">cloud serve</div>
+    </a>
+  
+</nav>
+
+  
+</article>
+
+
+</section>
+        
+          <aside id="sidebar">
+  
+    
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Tags</h3>
+    <div class="widget">
+      <ul class="tag-list" itemprop="keywords"><li class="tag-list-item"><a class="tag-list-link" href="/tags/qqagent/" rel="tag">qqagent</a></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Tag Cloud</h3>
+    <div class="widget tagcloud">
+      <a href="/tags/qqagent/" style="font-size: 10px;">qqagent</a>
+    </div>
+  </div>
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Archives</h3>
+    <div class="widget">
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2026/10/">October 2026</a></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Recent Posts</h3>
+    <div class="widget">
+      <ul>
+        
+          <li>
+            <a href="/2026/10/25/Stardew-Valley/">Stardew Valley</a>
+          </li>
+        
+          <li>
+            <a href="/2026/10/20/cloud-serve/">cloud serve</a>
+          </li>
+        
+          <li>
+            <a href="/2026/10/19/3D-desktop-pet-model-rendering/">3D desktop pet model rendering</a>
+          </li>
+        
+          <li>
+            <a href="/2026/10/16/My-New-Post/">My First Post</a>
+          </li>
+        
+          <li>
+            <a href="/2026/10/16/hello-world/">Hello World</a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+
+  
+</aside>
+        
+      </div>
+      <footer id="footer">
+  
+  <div class="outer">
+    <div id="footer-info" class="inner">
+      
+      &copy; 2026 bkndjz<br>
+      Powered by <a href="https://hexo.io/" target="_blank">Hexo</a>
+    </div>
+  </div>
+</footer>
+
+    </div>
+    <nav id="mobile-nav">
+  
+    <a href="/" class="mobile-nav-link">Home</a>
+  
+    <a href="/archives" class="mobile-nav-link">Archives</a>
+  
+</nav>
+    
+
+
+<script src="/js/jquery-3.6.4.min.js"></script>
+
+
+
+  
+<script src="/fancybox/jquery.fancybox.min.js"></script>
+
+
+
+
+<script src="/js/script.js"></script>
+
+
+
+
+
+  </div>
+</body>
+</html>
