@@ -1,0 +1,241 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  
+  
+  <title>数据结构 | My blog</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+  <meta name="description" content="这几天在恶补数据结构，主要是单链表的操作和二叉树。对于单链表操作，主要是增，删。对于增，头尾的增很简单，而在中间增，则要注意用两个指针提前储存增添位置前后的结构体，而删则是要用到三个指针。比较难的是二叉树。首先是树的建立与遍历，分为前中后序。前序，先输出当前节点，然后递归进入左节点，输出，再进入左节点，直到左边走到头。再递归进入右节点输出，右节点也走到头后，再回到进入右节点的那个左节点，再往回走一">
+<meta property="og:type" content="article">
+<meta property="og:title" content="数据结构">
+<meta property="og:url" content="https://bkndjz.github.io/2026/11/07/%E4%BA%8C%E5%8F%89%E6%A0%91/index.html">
+<meta property="og:site_name" content="My blog">
+<meta property="og:description" content="这几天在恶补数据结构，主要是单链表的操作和二叉树。对于单链表操作，主要是增，删。对于增，头尾的增很简单，而在中间增，则要注意用两个指针提前储存增添位置前后的结构体，而删则是要用到三个指针。比较难的是二叉树。首先是树的建立与遍历，分为前中后序。前序，先输出当前节点，然后递归进入左节点，输出，再进入左节点，直到左边走到头。再递归进入右节点输出，右节点也走到头后，再回到进入右节点的那个左节点，再往回走一">
+<meta property="og:locale" content="en_US">
+<meta property="article:published_time" content="2026-11-06T16:19:10.000Z">
+<meta property="article:modified_time" content="2026-11-06T16:59:58.105Z">
+<meta property="article:author" content="bkndjz">
+<meta property="article:tag" content="study">
+<meta name="twitter:card" content="summary">
+  
+    <link rel="alternate" href="/atom.xml" title="My blog" type="application/atom+xml">
+  
+  
+    <link rel="shortcut icon" href="/favicon.png">
+  
+  
+  
+<link rel="stylesheet" href="/css/style.css">
+
+  
+    
+<link rel="stylesheet" href="/fancybox/jquery.fancybox.min.css">
+
+  
+  
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/fork-awesome@1.2.0/css/fork-awesome.min.css">
+
+<meta name="generator" content="Hexo 8.1.2"></head>
+
+<body>
+  <div id="container">
+    <div id="wrap">
+      <header id="header">
+  <div id="banner"></div>
+  <div id="header-outer" class="outer">
+    <div id="header-title" class="inner">
+      <h1 id="logo-wrap">
+        <a href="/" id="logo">My blog</a>
+      </h1>
+      
+    </div>
+    <div id="header-inner" class="inner">
+      <nav id="main-nav">
+        <a id="main-nav-toggle" class="nav-icon"><span class="fa fa-bars"></span></a>
+        
+          <a class="main-nav-link" href="/">Home</a>
+        
+          <a class="main-nav-link" href="/archives">Archives</a>
+        
+      </nav>
+      <nav id="sub-nav">
+        
+        
+          <a class="nav-icon" href="/atom.xml" title="RSS Feed"><span class="fa fa-rss"></span></a>
+        
+        <a class="nav-icon nav-search-btn" title="Search"><span class="fa fa-search"></span></a>
+      </nav>
+      <div id="search-form-wrap">
+        <form action="//google.com/search" method="get" accept-charset="UTF-8" class="search-form"><input type="search" name="q" class="search-form-input" placeholder="Search"><button type="submit" class="search-form-submit">&#xF002;</button><input type="hidden" name="sitesearch" value="https://bkndjz.github.io"></form>
+      </div>
+    </div>
+  </div>
+</header>
+
+      <div class="outer">
+        <section id="main"><article id="post-二叉树" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
+  <div class="article-meta">
+    <a href="/2026/11/07/%E4%BA%8C%E5%8F%89%E6%A0%91/" class="article-date">
+  <time class="dt-published" datetime="2026-11-06T16:19:10.000Z" itemprop="datePublished">2026-11-07</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 class="p-name article-title" itemprop="headline name">
+      数据结构
+    </h1>
+  
+
+      </header>
+    
+    <div class="e-content article-entry" itemprop="articleBody">
+      
+        <p>这几天在恶补数据结构，主要是单链表的操作和二叉树。<br>对于单链表操作，主要是增，删。对于增，头尾的增很简单，而在中间增，则要注意用两个指针提前储存增添位置前后的结构体，而删则是要用到三个指针。<br>比较难的是二叉树。<br>首先是树的建立与遍历，分为前中后序。<br>前序，先输出当前节点，然后递归进入左节点，输出，再进入左节点，直到左边走到头。<br>再递归进入右节点输出，右节点也走到头后，再回到进入右节点的那个左节点，再往回走一步，继续找右节点，直到遍历完整棵树。<br>void head(const t* tree)<br>{<br>	const t now &#x3D; <em>tree;<br>	printf(“%c “, now.num);<br>	if (now.l)<br>		head(now.lc);<br>	if (now.r)<br>		head(now.rc);<br>}<br>中序，先向左节点走到头，再输出当前节点，再递归进入右节点，然后继续找左节点走到头输出。<br>右节点走到头则回到进入的左节点，再往回走一步，重复上述步骤.<br>void mid(const t</em> tree)<br>{<br>	const t now &#x3D; <em>tree;<br>	if (now.l)<br>		mid(now.lc);<br>	printf(“%c “, now.num);<br>	if (now.r)<br>		mid(now.rc);<br>}<br>后序，先向左走到头，在向右走到头，然后输出节点，然后回到上一个节点，重复.<br>void last(const t</em> tree)<br>{<br>	const t now &#x3D; <em>tree;<br>	if (now.l)<br>		last(now.lc);<br>	if (now.r)<br>		last(now.rc);<br>	printf(“%c “, now.num);<br>}<br>然后是二叉树的线索化，首先要加入两个变量用于记录左边和右边分别是子树还是线索<br>1头节点左端连二叉树的根节点，右边连输出的最后一个节点，节点左边为空则连接它的前驱，右边为空则连接它的后继，按序输出的第一个和最后一个节点，左右节点分别连接头节点.<br>线索化类似遍历，只不过将输出改为线索连接，并且要用全局变量来记录前驱。需要注意的是递归时要加入是否是子树的判断，否则可能陷入无限递归的死循环。<br>void h1(t</em> tree)<br>{<br>	if (tree &#x3D;&#x3D; NULL) return;<br>	else<br>	{<br>		if (tree-&gt;lc &#x3D;&#x3D; NULL) tree-&gt;lc &#x3D; pre;<br>		if (pre-&gt;rc &#x3D;&#x3D; NULL) pre-&gt;rc &#x3D; tree;<br>		pre &#x3D; tree;<br>		if (tree-&gt;l &#x3D;&#x3D; 1) h1(tree-&gt;lc);<br>		if (tree-&gt;r &#x3D;&#x3D; 1) h1(tree-&gt;rc);<br>	}<br>}<br>void h(t** head, t* tree)<br>{<br>	(*head)-&gt;l &#x3D; 1;<br>	(*head)-&gt;r &#x3D; 0;<br>	(*head)-&gt;rc &#x3D; *head;<br>	if (tree &#x3D;&#x3D; NULL) (*head)-&gt;lc &#x3D; *head;<br>	else<br>	{<br>		pre &#x3D; *head;<br>		(*head)-&gt;lc &#x3D; tree;<br>		h1(tree);<br>		(*head)-&gt;rc &#x3D; pre;<br>		pre-&gt;rc &#x3D; *head;<br>	}<br>}</p>
+<p>void m1(t* tree)<br>{<br>	if (tree &#x3D;&#x3D; NULL) return;<br>	else<br>	{<br>		if (tree-&gt;l &#x3D;&#x3D; 1) m1(tree-&gt;lc);<br>		if (tree-&gt;lc &#x3D;&#x3D; NULL) tree-&gt;lc &#x3D; pre;<br>		if (pre-&gt;rc &#x3D;&#x3D; NULL)pre-&gt;rc &#x3D; tree;<br>		pre &#x3D; tree;<br>		if (tree-&gt;r &#x3D;&#x3D; 1) m1(tree-&gt;rc);<br>	}<br>}<br>void m(t** head, t* tree)<br>{<br>	(*head)-&gt;l &#x3D; 1;<br>	(*head)-&gt;r &#x3D; 0;<br>	(*head)-&gt;rc &#x3D; *head;<br>	if(tree&#x3D;&#x3D;NULL) (*head)-&gt;lc &#x3D; *head;<br>	else<br>	{<br>		(*head)-&gt;lc &#x3D; tree;<br>		pre &#x3D; *head;<br>		m1(tree);<br>		pre-&gt;rc &#x3D; *head;<br>		(*head)-&gt;rc &#x3D; pre;<br>	}<br>}</p>
+<p>void la1(t* tree)<br>{<br>	if (tree &#x3D;&#x3D; NULL) return;<br>	else<br>	{<br>		if (tree-&gt;l &#x3D;&#x3D; 1) la1(tree-&gt;lc);<br>		if (tree-&gt;r &#x3D;&#x3D; 1) la1(tree-&gt;rc);<br>		if (tree-&gt;lc &#x3D;&#x3D; NULL) tree-&gt;lc &#x3D; pre;<br>		if (pre-&gt;rc &#x3D;&#x3D; NULL)pre-&gt;rc &#x3D; tree;<br>		pre &#x3D; tree;<br>	}<br>}<br>void la(t** head, t* tree)<br>{<br>	(*head)-&gt;l &#x3D; 1;<br>	(*head)-&gt;r &#x3D; 0;<br>	(*head)-&gt;rc &#x3D; *head;<br>	if (tree &#x3D;&#x3D; NULL) (*head)-&gt;lc &#x3D; *head;<br>	else<br>	{<br>		(*head)-&gt;lc &#x3D; tree;<br>		pre &#x3D; *head;<br>		la1(tree);<br>		pre-&gt;rc &#x3D; *head;<br>		(*head)-&gt;rc &#x3D; pre;<br>	}<br>}</p>
+<p>然后是线索化后的无递归遍历，这里只粘贴了前序和中序，对于后序二叉树，我目前未看到可靠的无递归遍历算法。<br>前序，直接进入根节点，输出，在向左输出，直到左边没有子树，再向右走一步，再一直向左，重复，直到走回头节点。<br>void inorderh(t* head)<br>{<br>	t* curr &#x3D; head-&gt;lc;<br>	while (curr !&#x3D; head)<br>	{<br>		printf(“%c “, curr-&gt;num);<br>		if (curr-&gt;l &#x3D;&#x3D; 1) curr &#x3D; curr-&gt;lc;<br>		else curr &#x3D; curr-&gt;rc;<br>	}<br>}<br>中序，则要先向左走到头，输出，然后看看右边是不是线索，以及是否到达尾节点，如果是线索，且不是尾节点，则进入线索指向的下一个节点，输出。<br>再重复判断，直到右边是子树或头节点，之后在向右走一步，循环直到回到头节点.<br>void inorderm(t* head)<br>{<br>	t* curr;<br>	curr &#x3D; head-&gt;lc;<br>	while (curr !&#x3D; head)<br>	{<br>		while (curr-&gt;l &#x3D;&#x3D; 1) curr &#x3D; curr-&gt;lc;<br>		printf(“%c “, curr-&gt;num);<br>		while (curr-&gt;r &#x3D;&#x3D; 0 &amp;&amp; curr-&gt;rc !&#x3D; head)<br>		{<br>			curr &#x3D; curr-&gt;rc;<br>			printf(“%c “, curr-&gt;num);<br>		}<br>		curr &#x3D; curr-&gt;rc;<br>	}<br>	printf(“\n”);<br>}</p>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="https://bkndjz.github.io/2026/11/07/%E4%BA%8C%E5%8F%89%E6%A0%91/" data-id="cuidVqqACbi97T29OtVxqrw32" data-title="数据结构" class="article-share-link"><span class="fa fa-share">Share</span></a>
+      
+      
+      
+  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/study/" rel="tag">study</a></li></ul>
+
+    </footer>
+  </div>
+  
+    
+<nav id="article-nav">
+  
+  
+    <a href="/2026/10/25/Stardew-Valley/" id="article-nav-older" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Older</strong>
+      <div class="article-nav-title">Stardew Valley</div>
+    </a>
+  
+</nav>
+
+  
+</article>
+
+
+</section>
+        
+          <aside id="sidebar">
+  
+    
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Tags</h3>
+    <div class="widget">
+      <ul class="tag-list" itemprop="keywords"><li class="tag-list-item"><a class="tag-list-link" href="/tags/qqagent/" rel="tag">qqagent</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/study/" rel="tag">study</a></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Tag Cloud</h3>
+    <div class="widget tagcloud">
+      <a href="/tags/qqagent/" style="font-size: 20px;">qqagent</a> <a href="/tags/study/" style="font-size: 10px;">study</a>
+    </div>
+  </div>
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Archives</h3>
+    <div class="widget">
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2026/11/">November 2026</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2026/10/">October 2026</a></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Recent Posts</h3>
+    <div class="widget">
+      <ul>
+        
+          <li>
+            <a href="/2026/11/07/%E4%BA%8C%E5%8F%89%E6%A0%91/">数据结构</a>
+          </li>
+        
+          <li>
+            <a href="/2026/10/25/Stardew-Valley/">Stardew Valley</a>
+          </li>
+        
+          <li>
+            <a href="/2026/10/20/cloud-serve/">cloud serve</a>
+          </li>
+        
+          <li>
+            <a href="/2026/10/19/3D-desktop-pet-model-rendering/">3D desktop pet model rendering</a>
+          </li>
+        
+          <li>
+            <a href="/2026/10/16/My-New-Post/">My First Post</a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+
+  
+</aside>
+        
+      </div>
+      <footer id="footer">
+  
+  <div class="outer">
+    <div id="footer-info" class="inner">
+      
+      &copy; 2026 bkndjz<br>
+      Powered by <a href="https://hexo.io/" target="_blank">Hexo</a>
+    </div>
+  </div>
+</footer>
+
+    </div>
+    <nav id="mobile-nav">
+  
+    <a href="/" class="mobile-nav-link">Home</a>
+  
+    <a href="/archives" class="mobile-nav-link">Archives</a>
+  
+</nav>
+    
+
+
+<script src="/js/jquery-3.6.4.min.js"></script>
+
+
+
+  
+<script src="/fancybox/jquery.fancybox.min.js"></script>
+
+
+
+
+<script src="/js/script.js"></script>
+
+
+
+
+
+  </div>
+</body>
+</html>
